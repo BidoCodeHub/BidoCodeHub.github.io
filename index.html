@@ -1,124 +1,446 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bido Mohamed | Engineering Portfolio</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap');
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bido Mohamed | Robotics & AI Engineer</title>
+  <meta name="description" content="Bido Mohamed — Mechanical Engineering graduate from UofT specializing in autonomous manipulation, computer vision, and robot learning." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #fff; color: #222; font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif; line-height: 1.6; }
+    a { color: #1772b4; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    hr.section-line { border: none; border-top: 1px solid #ccc; margin: 12px 0 20px; }
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    /* Layout */
+    .main-container { max-width: 860px; margin: 0 auto; padding: 40px 24px 60px; }
 
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: #f5f3ee;
-    color: #1a1a18;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-  }
+    /* Nav */
+    .nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; font-family: 'Source Sans 3', sans-serif; }
+    .nav-name { font-size: 18px; font-weight: 700; color: #222; }
+    .nav-links { display: flex; gap: 20px; font-size: 14px; }
 
-  .container {
-    max-width: 520px;
-    width: 100%;
-    text-align: center;
-  }
+    /* Bio */
+    .bio-grid { display: flex; gap: 36px; align-items: flex-start; margin-bottom: 24px; }
+    .bio-text { flex: 1; }
+    .bio-text h1 { font-family: 'Lato', sans-serif; font-size: 28px; font-weight: 900; color: #222; margin-bottom: 14px; }
+    .bio-text p { font-family: 'Source Sans 3', sans-serif; font-size: 14.5px; color: #333; line-height: 1.7; margin-bottom: 12px; }
+    .bio-links { font-family: 'Source Sans 3', sans-serif; font-size: 14px; display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+    .bio-links .sep { color: #ccc; }
+    .bio-photo { width: 200px; flex-shrink: 0; }
+    .photo-placeholder {
+      width: 200px; height: 200px; border-radius: 10px; background: #f0f0f0;
+      display: flex; align-items: center; justify-content: center;
+      color: #999; font-size: 13px; font-family: 'Source Sans 3', sans-serif;
+    }
+    .bio-photo img { width: 200px; height: 200px; border-radius: 10px; object-fit: cover; display: block; }
 
-  .eyebrow {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: #2a4a3e;
-    margin-bottom: 2rem;
-  }
+    /* Experience row */
+    .exp-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin: 20px 0 10px; }
+    .exp-card {
+      display: flex; flex-direction: column; align-items: center; gap: 4px;
+      padding: 10px 14px; border-radius: 8px; cursor: default; transition: background 0.2s;
+      min-width: 130px; text-align: center;
+    }
+    .exp-card:hover { background: #f5f5f5; }
+    .exp-logo {
+      width: 48px; height: 48px; border-radius: 8px; display: flex;
+      align-items: center; justify-content: center;
+      font-size: 22px; background: #f0f0f0; margin-bottom: 2px;
+    }
+    .exp-title { font-family: 'Source Sans 3', sans-serif; font-size: 12px; font-weight: 600; color: #333; }
+    .exp-date { font-family: 'Source Sans 3', sans-serif; font-size: 10.5px; color: #888; }
 
-  h1 {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(2.2rem, 6vw, 3.4rem);
-    font-weight: 400;
-    line-height: 1.15;
-    margin-bottom: 1.5rem;
-    letter-spacing: -0.01em;
-  }
+    /* Section titles */
+    .section-title { font-family: 'Lato', sans-serif; font-size: 20px; font-weight: 700; color: #222; margin-top: 36px; }
 
-  h1 em {
-    font-style: italic;
-    color: #2a4a3e;
-  }
+    /* News */
+    .news-list { list-style: none; padding: 0; }
+    .news-list li {
+      font-family: 'Source Sans 3', sans-serif; font-size: 14px; color: #333;
+      padding: 4px 0; display: flex; gap: 8px;
+    }
+    .news-date { color: #888; font-size: 13px; min-width: 90px; flex-shrink: 0; }
 
-  .message {
-    font-size: 16px;
-    color: #6b6b67;
-    line-height: 1.75;
-    margin-bottom: 2.5rem;
-  }
+    /* Items (research, projects, extracurriculars) */
+    .item { display: flex; gap: 20px; margin-bottom: 22px; align-items: flex-start; }
+    .item-thumb {
+      width: 160px; height: 110px; flex-shrink: 0; border-radius: 6px;
+      background: #f5f5f5; display: flex; align-items: center; justify-content: center;
+      font-size: 32px; border: 1px solid #eee;
+    }
+    .item-content { flex: 1; }
+    .item-title { font-family: 'Source Sans 3', sans-serif; font-size: 15px; font-weight: 700; color: #1772b4; margin-bottom: 3px; }
+    .item-meta { font-family: 'Source Sans 3', sans-serif; font-size: 13px; color: #555; margin-bottom: 4px; line-height: 1.4; }
+    .item-venue { font-family: 'Source Sans 3', sans-serif; font-size: 13px; color: #888; font-style: italic; margin-bottom: 5px; }
+    .item-desc { font-family: 'Source Sans 3', sans-serif; font-size: 13.5px; color: #444; line-height: 1.55; }
+    .item-tags { margin-top: 6px; }
+    .tag {
+      display: inline-block; font-family: 'Source Sans 3', sans-serif; font-size: 11px;
+      background: #f0f4f8; color: #556; padding: 2px 7px; border-radius: 3px;
+      margin-right: 4px; margin-top: 4px;
+    }
+    .item-links { margin-top: 6px; display: flex; gap: 10px; flex-wrap: wrap; }
+    .item-links a {
+      font-family: 'Source Sans 3', sans-serif; font-size: 12px; color: #1772b4;
+      padding: 2px 8px; border: 1px solid #1772b4; border-radius: 4px; transition: all 0.15s;
+    }
+    .item-links a:hover { background: #1772b4; color: #fff; text-decoration: none; }
+    .placement-gold { color: #d97706; font-weight: 700; }
+    .placement { color: #555; font-weight: 700; }
 
-  .divider {
-    width: 40px;
-    height: 1px;
-    background: rgba(0,0,0,0.15);
-    margin: 2.5rem auto;
-  }
+    /* Skills */
+    .skills-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 8px 40px;
+      font-family: 'Source Sans 3', sans-serif; font-size: 14px; color: #444;
+    }
+    .skills-grid dt { font-weight: 600; color: #333; padding: 4px 0 2px; }
+    .skills-grid dd { padding: 0 0 8px; margin: 0; }
 
-  .links {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
+    /* Footer */
+    .footer { margin-top: 48px; padding-top: 20px; border-top: 1px solid #ddd; text-align: center; }
+    .footer-icons { display: flex; justify-content: center; gap: 20px; margin-bottom: 10px; font-size: 22px; }
+    .footer-icons a { text-decoration: none; }
+    .footer p { font-family: 'Source Sans 3', sans-serif; font-size: 12px; color: #999; }
 
-  .link-btn {
-    background: transparent;
-    color: #1a1a18;
-    padding: 9px 20px;
-    border-radius: 8px;
-    font-size: 13px;
-    font-weight: 500;
-    text-decoration: none;
-    border: 1px solid rgba(0,0,0,0.15);
-    transition: background 0.15s;
-  }
-
-  .link-btn:hover { background: rgba(0,0,0,0.05); }
-
-  .link-btn.primary {
-    background: #2a4a3e;
-    color: white;
-    border-color: transparent;
-  }
-
-  .link-btn.primary:hover { opacity: 0.88; }
-
-  footer {
-    margin-top: 3rem;
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    color: #aaa;
-    letter-spacing: 0.05em;
-  }
-</style>
+    /* Responsive */
+    @media (max-width: 640px) {
+      .bio-grid { flex-direction: column-reverse; align-items: center; text-align: center; }
+      .bio-photo { width: 160px; }
+      .photo-placeholder, .bio-photo img { width: 160px; height: 160px; }
+      .bio-links { justify-content: center; }
+      .item { flex-direction: column; }
+      .item-thumb { width: 100%; height: 140px; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .nav-links { gap: 12px; font-size: 13px; }
+    }
+  </style>
 </head>
 <body>
+  <div class="main-container">
 
-<div class="container">
-  <p class="eyebrow">Bido Mohamed | Engineering Portfolio</p>
+    <!-- NAV -->
+    <nav class="nav">
+      <span class="nav-name">Bido Mohamed</span>
+      <div class="nav-links">
+        <a href="#about">Home</a>
+        <a href="#research">Research</a>
+        <a href="#extracurriculars">Extracurriculars</a>
+        <a href="#projects">Projects</a>
+        <a href="/docs/Resume.pdf">Resume</a>
+      </div>
+    </nav>
 
-  <h1>Something great<br>is <em>coming soon.</em></h1>
+    <!-- BIO -->
+    <section id="about">
+      <div class="bio-grid">
+        <div class="bio-text">
+          <h1>Bido Mohamed</h1>
+          <p>
+            Hello! I'm Bido, a recent Mechanical Engineering graduate from the
+            <a href="https://www.utoronto.ca/" target="_blank" rel="noopener noreferrer">University of Toronto</a>
+            with a minor in Robotics &amp; Mechatronics. My work focuses on building autonomous systems that integrate
+            perception, planning, and control — from vision-based object detection to robotic grasping and mobile manipulation.
+          </p>
+          <p>
+            For my undergraduate thesis in the
+            <a href="https://www.mie.utoronto.ca/" target="_blank" rel="noopener noreferrer">Robotics &amp; Automation Lab</a>,
+            I developed a modular perception-to-grasp pipeline for autonomous dish loading, supervised by
+            <a href="#">Prof. Andrew Goldenberg</a>. I also completed an R&amp;D internship at
+            <a href="https://e-zinc.ca/" target="_blank" rel="noopener noreferrer">e-Zinc</a>, where I worked on
+            electrochemical optimization for zinc-air batteries.
+          </p>
+          <p>
+            Outside of coursework and research, I've been active in UofT's engineering design teams — leading
+            perception software at
+            <a href="#">Robotics for Space Exploration (RSX)</a> and designing electrical systems
+            for the
+            <a href="#">Supermileage Team (UTSM)</a>. I'm currently seeking
+            <strong>robotics and AI engineering roles in the Bay Area</strong>.
+          </p>
+          <p>
+            <strong>Interests:</strong> Autonomous Manipulation, Computer Vision, Robot Learning, SLAM &amp; Navigation
+          </p>
+          <div class="bio-links">
+            <a href="mailto:abdalla.mohamed@mail.utoronto.ca">Email</a>
+            <span class="sep">/</span>
+            <a href="https://github.com/BidoCodeHub" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <span class="sep">/</span>
+            <a href="/docs/Resume.pdf">Resume</a>
+            <span class="sep">/</span>
+            <a href="https://www.linkedin.com/in/bido-mohamed" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          </div>
+        </div>
+        <div class="bio-photo">
+          <!-- Replace this div with: <img src="images/profile.jpg" alt="Bido Mohamed"> -->
+          <div class="photo-placeholder">Your photo</div>
+        </div>
+      </div>
 
-  <p class="message">
-    I am currently adding my projects and putting the finishing touches on this portfolio.
-    Check back soon, it will be worth the wait.
-  </p>
+      <!-- EXPERIENCE ROW -->
+      <div class="exp-row">
+        <div class="exp-card">
+          <div class="exp-logo">🔬</div>
+          <div class="exp-title">Thesis Researcher</div>
+          <div class="exp-date">UofT Robotics Lab</div>
+          <div class="exp-date">Sep '25 – Apr '26</div>
+        </div>
+        <div class="exp-card">
+          <div class="exp-logo">🔋</div>
+          <div class="exp-title">R&amp;D Intern</div>
+          <div class="exp-date">e-Zinc</div>
+          <div class="exp-date">Aug '24 – Mar '25</div>
+        </div>
+        <div class="exp-card">
+          <div class="exp-logo">🎓</div>
+          <div class="exp-title">BASc Mech. Eng.</div>
+          <div class="exp-date">University of Toronto</div>
+          <div class="exp-date">Sep '21 – May '26</div>
+        </div>
+      </div>
+    </section>
 
-  <div class="divider"></div>
+    <!-- NEWS -->
+    <h2 class="section-title">News</h2>
+    <hr class="section-line" />
+    <ul class="news-list">
+      <li><span class="news-date">May 2026</span> Graduated from the University of Toronto with a BASc in Mechanical Engineering!</li>
+      <li><span class="news-date">Jan 2026</span> Placed <strong>4th</strong> at UTEK 2T6 Senior Design — built a wearable low-vision reader with OCR and text-to-speech.</li>
+      <li><span class="news-date">Sep 2025</span> Started undergraduate thesis in the Robotics &amp; Automation Lab, supervised by Prof. Andrew Goldenberg.</li>
+      <li><span class="news-date">Sep 2025</span> Joined <a href="#">Robotics for Space Exploration</a> as Arm Software Project Lead.</li>
+      <li><span class="news-date">Jan 2025</span> Won <strong>2nd place</strong> at UTEK 2T5 Senior Design with a wildfire response rover.</li>
+      <li><span class="news-date">Aug 2024</span> Started R&amp;D internship at <a href="https://e-zinc.ca/" target="_blank" rel="noopener noreferrer">e-Zinc</a>.</li>
+    </ul>
 
-  <div class="links">
-    <a class="link-btn primary" href="/cdn-cgi/l/email-protection#a7dec8d2d5e7c2cac6cecb89c4c8ca">Get in touch</a>
-    <a class="link-btn" href="https://www.linkedin.com/in/bido-mohamed" target="_blank">LinkedIn</a>
-    <a class="link-btn" href="https://github.com/BidoCodeHub" target="_blank">GitHub</a>
+    <!-- RESEARCH -->
+    <section id="research">
+      <h2 class="section-title">Research</h2>
+      <hr class="section-line" />
+
+      <div class="item">
+        <div class="item-thumb">🍽️</div>
+        <div class="item-content">
+          <div class="item-title">Autonomous Dish Loading via Perception-to-Grasp Pipeline</div>
+          <div class="item-meta"><strong>Bido Mohamed</strong> (Supervised by Andrew Goldenberg)</div>
+          <div class="item-venue">Undergraduate Thesis — Robotics &amp; Automation Lab, University of Toronto, 2025–2026</div>
+          <div class="item-desc">
+            Developed a modular YOLOv8/GR-ConvNet perception-to-grasp pipeline for autonomous dish loading in cluttered PyBullet
+            environments. Optimized pick sequences via Held-Karp TSP, achieving 0.995 mAP50 and 83% grasp success across
+            2,000 validation scenes.
+          </div>
+          <div class="item-links">
+            <a href="#">Paper</a>
+            <a href="#">Code</a>
+            <a href="#">Video</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="item-thumb">🔋</div>
+        <div class="item-content">
+          <div class="item-title">Electrochemical Additive Optimization for Zinc Battery Cycle Life</div>
+          <div class="item-meta"><strong>Bido Mohamed</strong> (Supervised by Rutendo Mutambanengwe)</div>
+          <div class="item-venue">R&amp;D Internship — e-Zinc, Mississauga, ON — Aug 2024 – Mar 2025</div>
+          <div class="item-desc">
+            Conducted electrochemical experiments to evaluate 12 additive formulations, optimizing battery cycle life and
+            improving charging efficiency by 7%. Redesigned bench-top battery test cell with leak-free configuration and
+            modified air-box, improving cost efficiency and reducing experimental lead time by 4 weeks.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXTRACURRICULARS -->
+    <section id="extracurriculars">
+      <h2 class="section-title">Extracurriculars</h2>
+      <hr class="section-line" />
+
+      <!-- RSX -->
+      <div class="item">
+        <div class="item-thumb">🚀</div>
+        <div class="item-content">
+          <div class="item-title">Robotics for Space Exploration (RSX) — Arm Software Project Lead</div>
+          <div class="item-venue">University of Toronto — Sep 2025 – Present</div>
+          <div class="item-desc">
+            Leading two major technical efforts on the rover arm software team. First, spearheaded the ROS 2 migration
+            of the arm control stack from Humble to Jazzy. Second, leading the perception module for autonomous keyboard-typing,
+            including custom dataset creation, model fine-tuning, and end-to-end ROS 2 integration from key detection to
+            arm motion planning.
+          </div>
+          <div class="item-tags">
+            <span class="tag">ROS 2</span>
+            <span class="tag">Perception</span>
+            <span class="tag">Fine-tuning</span>
+            <span class="tag">Dataset Creation</span>
+          </div>
+          <div class="item-links">
+            <a href="#">Code</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- UTSM -->
+      <div class="item">
+        <div class="item-thumb">🏎️</div>
+        <div class="item-content">
+          <div class="item-title">University of Toronto Supermileage (UTSM) — Electrical Accessories Lead</div>
+          <div class="item-venue">University of Toronto</div>
+          <div class="item-desc">
+            Started as a member of the electrical accessories sub-team, designing light fixtures and PCBs for the
+            supermileage vehicle. Promoted to Electrical Accessories Lead, overseeing the full electrical accessories
+            subsystem including component selection, PCB layout, and integration with the vehicle's electrical architecture.
+          </div>
+          <div class="item-tags">
+            <span class="tag">KiCad</span>
+            <span class="tag">PCB Design</span>
+            <span class="tag">Electrical Systems</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- UTEK 2T5 -->
+      <div class="item">
+        <div class="item-thumb" style="font-size:24px">🔥</div>
+        <div class="item-content">
+          <div class="item-title">UTEK 2T5 Senior Design — Wildfire Response Rover <span class="placement-gold">• 2nd Place</span></div>
+          <div class="item-venue">University of Toronto Engineering Kompetitions — Jan 2025</div>
+          <div class="item-desc">
+            Built embedded rover control software with ultrasonic sensing and DC motor control over a 2-day design
+            competition. Delivered a functional prototype meeting all functional requirements under tight hardware
+            and time constraints.
+          </div>
+          <div class="item-tags">
+            <span class="tag">Embedded C</span>
+            <span class="tag">Ultrasonic Sensing</span>
+            <span class="tag">DC Motor Control</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- UTEK 2T6 -->
+      <div class="item">
+        <div class="item-thumb" style="font-size:24px">👓</div>
+        <div class="item-content">
+          <div class="item-title">UTEK 2T6 Senior Design — Wearable Low-Vision Reader <span class="placement">• 4th Place</span></div>
+          <div class="item-venue">University of Toronto Engineering Kompetitions — Jan 2026</div>
+          <div class="item-desc">
+            Designed and built a wearable assistive device for visually impaired users over a 2-day hackathon.
+            The system used an ESP32-CAM for image capture, Tesseract OCR for text recognition, and text-to-speech
+            for audio output — with playback controls, memory recall, and multilingual support.
+          </div>
+          <div class="item-tags">
+            <span class="tag">ESP32-CAM</span>
+            <span class="tag">Tesseract OCR</span>
+            <span class="tag">Text-to-Speech</span>
+            <span class="tag">Python</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COURSE PROJECTS -->
+    <section id="projects">
+      <h2 class="section-title">Course Projects</h2>
+      <hr class="section-line" />
+
+      <div class="item">
+        <div class="item-thumb">👁️</div>
+        <div class="item-content">
+          <div class="item-title">Real-Time Vision-Based Robot Tracking and Evaluation System</div>
+          <div class="item-venue">MIE491 — Sep 2025 – Apr 2026</div>
+          <div class="item-desc">
+            Engineered a real-time vision pipeline (MOG2, MeanShift, EMA) for rover tracking, achieving 99% accuracy
+            validated against AprilTag ground truth. Built a Streamlit dashboard with automated collision, stop, and
+            intervention detection, supplementing human evaluation for mechatronics design competitions.
+          </div>
+          <div class="item-tags">
+            <span class="tag">OpenCV</span>
+            <span class="tag">MOG2</span>
+            <span class="tag">MeanShift</span>
+            <span class="tag">Streamlit</span>
+            <span class="tag">AprilTag</span>
+          </div>
+          <div class="item-links"><a href="#">Code</a></div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="item-thumb">🗺️</div>
+        <div class="item-content">
+          <div class="item-title">Autonomous Robot Exploration and Mobile Manipulation</div>
+          <div class="item-venue">MIE443 — Jan 2025 – Apr 2026</div>
+          <div class="item-desc">
+            Designed a reactive exploration algorithm using LiDAR range classification and a prioritized finite state machine
+            for autonomous SLAM mapping on TurtleBot4. Integrated YOLOv8 perception pipeline with AprilTag localization,
+            path-optimized Nav2 navigation, and MoveIt2 arm control for autonomous pick-and-place.
+          </div>
+          <div class="item-tags">
+            <span class="tag">ROS 2</span>
+            <span class="tag">SLAM</span>
+            <span class="tag">YOLOv8</span>
+            <span class="tag">Nav2</span>
+            <span class="tag">MoveIt2</span>
+            <span class="tag">TurtleBot4</span>
+          </div>
+          <div class="item-links">
+            <a href="#">Code</a>
+            <a href="#">Video</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="item-thumb">📸</div>
+        <div class="item-content">
+          <div class="item-title">Dishware Instance Segmentation</div>
+          <div class="item-venue">APS360 — Sep 2025 – Dec 2025</div>
+          <div class="item-desc">
+            Built a PyTorch-based training and evaluation pipeline on COCO/LVIS data for benchmarking instance segmentation
+            models. Fine-tuned Faster R-CNN for dishware in cluttered kitchen scenes, outperforming YOLOv8-Seg baseline
+            by +0.13 AP50.
+          </div>
+          <div class="item-tags">
+            <span class="tag">PyTorch</span>
+            <span class="tag">Faster R-CNN</span>
+            <span class="tag">YOLOv8-Seg</span>
+            <span class="tag">COCO</span>
+            <span class="tag">LVIS</span>
+          </div>
+          <div class="item-links"><a href="#">Code</a></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <h2 class="section-title">Technical Skills</h2>
+      <hr class="section-line" />
+      <dl class="skills-grid">
+        <dt>Programming Languages</dt>
+        <dd>Python, C++, C, MATLAB</dd>
+        <dt>Robotics &amp; Simulation</dt>
+        <dd>ROS 2 (Jazzy/Humble), Gazebo, PyBullet, Git, Linux</dd>
+        <dt>ML &amp; Computer Vision</dt>
+        <dd>PyTorch, YOLOv8, OpenCV, NumPy, pandas, Matplotlib</dd>
+        <dt>CAD &amp; Hardware</dt>
+        <dd>SolidWorks (CSWA), ANSYS FEA, KiCad</dd>
+      </dl>
+    </section>
+
+    <!-- FOOTER -->
+    <div class="footer">
+      <div class="footer-icons">
+        <a href="mailto:abdalla.mohamed@mail.utoronto.ca" title="Email">✉️</a>
+        <a href="https://github.com/BidoCodeHub" target="_blank" rel="noopener noreferrer" title="GitHub">💻</a>
+        <a href="https://www.linkedin.com/in/bido-mohamed" target="_blank" rel="noopener noreferrer" title="LinkedIn">🔗</a>
+      </div>
+      <p>&copy; 2026 Bido Mohamed</p>
+    </div>
+
   </div>
-
-  <footer>bidomohamed.
+</body>
+</html>
