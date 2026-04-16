@@ -139,28 +139,6 @@
   </style>
 </head>
 <body>
-  <!-- Under Construction Gate -->
-  <div id="construction-gate" style="display:none; position:fixed; inset:0; z-index:9999; background:#fff;
-    font-family:'Source Sans 3',sans-serif; text-align:center; padding-top:20vh;">
-    <h1 style="font-family:'Lato',sans-serif; font-size:32px; font-weight:900; color:#222; margin-bottom:16px;">
-      Portfolio Under Construction
-    </h1>
-    <p style="font-size:16px; color:#666; max-width:400px; margin:0 auto; line-height:1.6;">
-      I'm currently updating my portfolio with new projects and content. Check back soon!
-    </p>
-    <p style="margin-top:24px; font-size:14px; color:#999;">Bido Mohamed</p>
-  </div>
-  <script>
-    (function() {
-      if (new URLSearchParams(window.location.search).has('dev')) {
-        localStorage.setItem('portfolioDev', 'true');
-      }
-      if (localStorage.getItem('portfolioDev') !== 'true') {
-        document.getElementById('construction-gate').style.display = 'block';
-        document.querySelector('.main-container').style.display = 'none';
-      }
-    })();
-  </script>
   <div class="main-container">
 
     <!-- NAV -->
