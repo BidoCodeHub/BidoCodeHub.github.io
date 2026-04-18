@@ -105,6 +105,12 @@
     .placement-gold { color: #d97706; font-weight: 700; }
     .placement { color: #555; font-weight: 700; }
 
+    /* Metric strip (used on industry capstone cards) */
+    .metric-strip { display: flex; flex-wrap: wrap; gap: 5px; margin: 6px 0 2px; }
+    .metric { font-family: 'Source Sans 3', sans-serif; font-size: 11px; background: #fff;
+              border: 1px solid #d8e1eb; color: #1a1a1a; padding: 3px 8px; border-radius: 3px; }
+    .metric strong { color: #1772b4; font-weight: 700; margin-right: 3px; }
+
     /* Read More (details/summary) */
     .item-details { margin-top: 8px; }
     .item-details summary {
@@ -174,22 +180,15 @@
           <p>
             Hello! I'm Bido, a recent Mechanical Engineering graduate from the
             <a href="https://www.utoronto.ca/" target="_blank" rel="noopener noreferrer">University of Toronto</a>
-            with a minor in Robotics &amp; Mechatronics. My work focuses on building autonomous systems that integrate
-            perception, planning, and control, from vision-based object detection to robotic grasping and mobile manipulation.
+            with a minor in Robotics &amp; Mechatronics, currently seeking new graduate roles in robotics and AI in the Bay Area. I build perception-to-action pipelines: vision models that feed grasp planners that feed motion controllers, validated in simulation with hardware integration on TurtleBot4, the SO101 arm, and a Mars rover.
           </p>
           <p>
-            For my undergraduate thesis in the
-            <a href="https://ral.mie.utoronto.ca/" target="_blank" rel="noopener noreferrer">Robotics &amp; Automation Laboratory</a>,
-            I developed a modular perception-to-grasp pipeline for autonomous dish loading, supervised by
-            <a href="https://www.mie.utoronto.ca/faculty_staff/goldenberg/" target="_blank" rel="noopener noreferrer">Prof. Andrew Goldenberg</a>. I also completed an R&amp;D internship at
-            <a href="https://e-zinc.ca/" target="_blank" rel="noopener noreferrer">e-Zinc</a>, where I worked on
-            electrochemical optimization for zinc-air batteries.
-          </p>
-          <p>
-            Outside of coursework and research, I've been active in UofT's engineering design teams, leading
-            perception software at
-            <a href="https://rsx.skule.ca/" target="_blank" rel="noopener noreferrer">Robotics for Space Exploration (RSX)</a> and designing electrical systems for the
-            <a href="https://www.utsm.ca/" target="_blank" rel="noopener noreferrer">Supermileage Team (UTSM)</a>. Based in Toronto, open to relocation. Currently seeking new graduate roles in robotics and AI, with a focus on autonomous systems, computer vision, and robot learning.
+            My undergraduate thesis in the
+            <a href="https://ral.mie.utoronto.ca/" target="_blank" rel="noopener noreferrer">Robotics &amp; Automation Laboratory</a> (supervised by
+            <a href="https://www.mie.utoronto.ca/faculty_staff/goldenberg/" target="_blank" rel="noopener noreferrer">Prof. Andrew Goldenberg</a>) builds an end-to-end YOLOv8 plus GRConvNet plus PlaceNet pipeline for autonomous dish loading. Before that, I ran an R&amp;D internship at
+            <a href="https://e-zinc.ca/" target="_blank" rel="noopener noreferrer">e-Zinc</a> on electrochemical optimization for zinc-air batteries, led perception software at
+            <a href="https://rsx.skule.ca/" target="_blank" rel="noopener noreferrer">Robotics for Space Exploration (RSX)</a>, and ran the electrical accessories subsystem for the
+            <a href="https://www.utsm.ca/" target="_blank" rel="noopener noreferrer">Supermileage Team (UTSM)</a>. Based in Toronto, open to relocation.
           </p>
           <div class="bio-links">
             <a href="mailto:abdalla.mohamed@mail.utoronto.ca">Email</a>
@@ -292,8 +291,7 @@
           <div class="item-meta"><strong>Bido Mohamed</strong> (Supervised by Rutendo Mutambanengwe)</div>
           <div class="item-venue">R&amp;D Internship, e-Zinc, Mississauga, ON, Aug 2024 – Mar 2025</div>
           <div class="item-desc">
-            Conducted electrochemical experiments to evaluate 12 additive formulations, optimizing battery cycle life and
-            improving charging efficiency by 7%.
+            Screened 12 electrolyte additive formulations to optimize zinc-air battery cycle life, redesigned the Phoenix Cell test fixture for safer and faster screening, and built a PCB plus firmware rig to measure motor power draw as a proxy for zinc adhesion strength.
           </div>
           <details class="item-details">
             <summary>Read more</summary>
@@ -307,8 +305,7 @@
                 Also designed a custom PCB and firmware for motor power-draw measurement to validate zinc adhesion strength correlation.
               </p>
               <p>
-                <strong>Results:</strong> 7% improvement in charging efficiency, 4-week reduction in experimental lead time,
-                leak-free fixture configuration validated across multiple test cycles.
+                <strong>Results:</strong> Lead additive candidate raised coulombic efficiency by 7 points over baseline; redesigned fixture cut experimental lead time by 4 weeks per cycle and ran leak-free across all subsequent test campaigns.
               </p>
             </div>
           </details>
@@ -336,24 +333,16 @@
           <div class="item-title">Robotics for Space Exploration (RSX), Arm Software Project Lead</div>
           <div class="item-venue">University of Toronto, Sep 2025 – Apr 2026</div>
           <div class="item-desc">
-            Leading two major technical efforts on the rover arm software team: the ROS 2 migration from Humble to Jazzy
-            and the perception module for autonomous keyboard-typing.
+            Built the perception stack that lets the rover arm find and press keys on a real keyboard, plus drove the team's ROS 2 migration from Humble to Jazzy.
           </div>
           <details class="item-details">
             <summary>Read more</summary>
             <div class="detail-content">
               <p>
-                Built a computer vision pipeline using ArUco marker detection with Intel RealSense depth cameras to localize
-                keyboards in 3D space. The system converts 2D pixel coordinates to 3D world positions, validates keyboard
-                geometry (planarity, dimensions, aspect ratio), and interpolates individual key positions for robotic arm targeting.
+                The keyboard-typing pipeline uses ArUco marker detection with Intel RealSense depth cameras to localize keyboards in 3D space. It converts 2D pixel coordinates to 3D world positions, validates keyboard geometry (planarity, dimensions, aspect ratio), and interpolates individual key positions for arm targeting.
               </p>
               <p>
-                Also trained a custom YOLO model via Roboflow that detects 58+ individual keyboard keys at 0.90+ average
-                confidence. The pipeline integrates with ROS 2 publish/subscribe architecture for real-time arm motion planning.
-              </p>
-              <p>
-                Includes median depth filtering (5x5 window), fallback camera models, and throttled logging for robust
-                real-time operation at 10+ Hz.
+                Trained a custom YOLO model via Roboflow as a complementary detector for keyboard keys. The pipeline integrates with ROS 2 publish/subscribe for real-time arm motion planning, with median depth filtering (5x5 window), fallback camera models, and throttled logging for stable operation at 10+ Hz.
               </p>
             </div>
           </details>
@@ -390,7 +379,7 @@
                 multi-voltage power distribution (12V, 7V, 5V), and an analog/smart input board for sensor connectivity.
               </p>
               <p>
-                Managed the full subsystem lifecycle: component selection, KiCad PCB layout, 3D CAD housing design, unit testing, and integration into the vehicle's electrical architecture. Led the team through a 4-month sprint to competition readiness for <a href="https://results.sem-app.com/app/sem_2025_us/team/CA0018001" target="_blank" rel="noopener noreferrer">Shell Eco-marathon Americas 2025</a>.
+                Owned the full subsystem lifecycle: component selection, KiCad PCB layout, 3D CAD housing design, unit testing, and integration into the vehicle's electrical architecture. Drove a 4-month sprint to competition readiness; all three boardlets were fabricated, brought up, and integrated into the TopG node ahead of <a href="https://results.sem-app.com/app/sem_2025_us/team/CA0018001" target="_blank" rel="noopener noreferrer">Shell Eco-marathon Americas 2025</a>.
               </p>
             </div>
           </details>
@@ -419,13 +408,10 @@
             <summary>Read more</summary>
             <div class="detail-content">
               <p>
-                Designed and programmed a 4WD autonomous rover capable of navigating to fire locations and delivering water
-                suppression. The system uses ultrasonic sensors for obstacle detection and autonomous path planning, with
-                embedded C firmware controlling DC motors for precise navigation.
+                Built a 4WD autonomous rover that navigates to a fire source and delivers water suppression. Reactive obstacle avoidance via ultrasonic sensing and a hand-tuned state machine in embedded C, driving the DC motors directly.
               </p>
               <p>
-                The red-enclosed, weatherproof chassis was built for field readiness and durability. Delivered a fully
-                functional prototype meeting all competition requirements under tight hardware and time constraints.
+                Weatherproof chassis built for field readiness; full prototype delivered in 48 hours and met every competition requirement under tight hardware and time constraints.
               </p>
             </div>
           </details>
@@ -447,21 +433,16 @@
           <div class="item-title">UTEK 2T6 Senior Design, Wearable Low-Vision Reader <span class="placement">• 4th Place</span></div>
           <div class="item-venue">University of Toronto Engineering Kompetitions, Jan 2026</div>
           <div class="item-desc">
-            Designed and built a wearable assistive device for visually impaired users over a 2-day hackathon,
-            converting real-world text into audio via camera input, OCR, and text-to-speech.
+            Built a wearable assistive device that reads real-world text aloud for visually impaired users, end-to-end in 48 hours: ESP32-CAM capture, Tesseract OCR, text-to-speech output.
           </div>
           <details class="item-details">
             <summary>Read more</summary>
             <div class="detail-content">
               <p>
-                The system uses an ESP32-CAM for image capture, Tesseract OCR for text recognition, and text-to-speech
-                synthesis for audio output. Features include playback controls (pause, rewind, speed), memory recall for
-                previously read text, and multilingual support.
+                Camera image to spoken output runs through an ESP32-CAM streamer, a host-side Tesseract OCR pass, and a TTS engine. Playback controls (pause, rewind, speed) on the wearable let the user navigate longer passages.
               </p>
               <p>
-                Designed to address the needs of over 2.2 billion people worldwide with vision impairment, providing an
-                affordable alternative to expensive assistive devices for reading signs, menus, medication labels, and
-                documents in everyday environments.
+                Aimed at the 2.2 billion people worldwide with vision impairment, as an affordable alternative to expensive assistive devices for reading signs, menus, medication labels, and everyday documents.
               </p>
             </div>
           </details>
@@ -530,8 +511,7 @@
           <div class="item-title">Autonomous Robot Exploration and Mobile Manipulation</div>
           <div class="item-venue">MIE443, Jan 2025 – Apr 2026</div>
           <div class="item-desc">
-            Developed autonomous exploration and pick-and-place capabilities on TurtleBot4 and a SO101 6-DOF robot arm
-            across two in-class programming contests.
+            Built autonomous exploration and pick-and-place on a TurtleBot4 plus SO101 6-DOF arm across two in-class programming contests.
           </div>
           <details class="item-details">
             <summary>Read more</summary>
@@ -605,9 +585,14 @@
         <div class="item-content">
           <div class="item-title">Automotive Window Regulator Constant Tensioner</div>
           <div class="item-venue">MIE442 Industry Capstone with Magna Automotive, Sep 2025 – Apr 2026</div>
+          <div class="metric-strip">
+            <span class="metric"><strong>40 to 75 N</strong>cable tension</span>
+            <span class="metric"><strong>710 N</strong>stall load</span>
+            <span class="metric"><strong>50,000+</strong>cycles</span>
+            <span class="metric"><strong>SF &gt; 1.25</strong>across all load cases</span>
+          </div>
           <div class="item-desc">
-            Redesigned the constant-tension device in automotive cable window regulators in collaboration with Magna,
-            maintaining 40–75 N cable tension while surviving 710 N stall loads and 50,000+ operating cycles.
+            Redesigned the constant-tension device in automotive cable window regulators in collaboration with Magna, maintaining 40 to 75 N cable tension while surviving 710 N stall loads and 50,000+ operating cycles.
           </div>
           <details class="item-details">
             <summary>Read more</summary>
@@ -623,8 +608,7 @@
                 a smaller footprint than the existing production design.
               </p>
               <p>
-                <strong>Results:</strong> All functional requirements met. Design validated for 50,000+ cycle durability,
-                manufacturing-feasible geometry identified, cost-effective for automotive production volumes.
+                <strong>Results:</strong> All functional requirements met. Design validated for 50,000+ cycle durability with safety factors above 1.25 across all load cases; manufacturing-feasible geometry identified for stamping plus CNC finishing.
               </p>
             </div>
           </details>
@@ -644,13 +628,13 @@
       <hr class="section-line" />
       <dl class="skills-grid">
         <dt>Programming Languages</dt>
-        <dd>Python, C++, C, MATLAB</dd>
+        <dd>Python, C++, Embedded C (Arduino, ESP32), MATLAB</dd>
         <dt>Robotics &amp; Simulation</dt>
-        <dd>ROS 2 (Jazzy/Humble), Gazebo, PyBullet, Git, Linux</dd>
+        <dd>ROS 2 (Jazzy/Humble), Nav2, MoveIt2, slam_toolbox, AprilTag, Gazebo, PyBullet, Git, Linux</dd>
         <dt>ML &amp; Computer Vision</dt>
-        <dd>PyTorch, YOLOv8, OpenCV, NumPy, pandas, Matplotlib</dd>
-        <dt>CAD &amp; Hardware</dt>
-        <dd>SolidWorks (CSWA), ANSYS FEA, KiCad</dd>
+        <dd>PyTorch, YOLOv8, GRConvNet, Faster R-CNN, OpenCV, RealSense SDK, Tesseract OCR, Roboflow, NumPy, pandas, Streamlit, Matplotlib</dd>
+        <dt>Hardware &amp; CAD</dt>
+        <dd>SolidWorks (CSWA), ANSYS FEA, KiCad PCB design, CAN bus, ESP32, oscilloscope and bench instrumentation</dd>
       </dl>
     </section>
 
